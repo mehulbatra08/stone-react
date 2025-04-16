@@ -7,7 +7,15 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
       <div className="container">
-        <Link className="navbar-brand fw-bold" to="/">Global Stone Exports</Link>
+        <Link className="navbar-brand" to="/">
+          <img 
+            src="/images/Chawanda-Logo-No-Bg.png" 
+            alt="Chawanda Logo" 
+            height="75"
+            width="150"
+            className="d-inline-block align-top"
+          />
+        </Link>
         <button 
           className="navbar-toggler" 
           type="button" 

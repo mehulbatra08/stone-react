@@ -28,7 +28,7 @@ const Process = () => {
             <div key={index} className="col-md-4">
               <div className="card h-100 border-0 shadow-sm">
                 <div className="card-body text-center">
-                  <div className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style={{width: '80px', height: '80px'}}>
+                  <div className="text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style={{width: '80px', height: '80px', backgroundColor: '#b78f59'}}>
                     <i className={`fas ${process.icon} fa-2x`}></i>
                   </div>
                   <h4>{process.title}</h4>

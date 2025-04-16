@@ -16,7 +16,7 @@ const About = () => {
             <div className="card h-100 border-0 shadow-sm">
               <div className="card-body p-4">
                 <div className="d-flex align-items-center mb-4">
-                  <div className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style={{width: '50px', height: '50px'}}>
+                  <div className="text-white rounded-circle d-flex align-items-center justify-content-center me-3" style={{width: '50px', height: '50px', backgroundColor: '#b78f59'}}>
                     <i className="fas fa-bullseye fa-lg"></i>
                   </div>
                   <h3 className="mb-0">Our Mission</h3>
@@ -42,7 +42,7 @@ const About = () => {
             <div className="card h-100 border-0 shadow-sm">
               <div className="card-body p-4">
                 <div className="d-flex align-items-center mb-4">
-                  <div className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style={{width: '50px', height: '50px'}}>
+                  <div className="text-white rounded-circle d-flex align-items-center justify-content-center me-3" style={{width: '50px', height: '50px', backgroundColor: '#b78f59'}}>
                     <i className="fas fa-eye fa-lg"></i>
                   </div>
                   <h3 className="mb-0">Our Vision</h3>

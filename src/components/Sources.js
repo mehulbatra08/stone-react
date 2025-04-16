@@ -12,7 +12,7 @@ import {
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 // Animation for counting up numbers
-const AnimatedNumber = ({ value, label }) => {
+const AnimatedNumber = ({ value, label, color = '#b78f59' }) => {
   const [count, setCount] = useState(0);
   
   useEffect(() => {
@@ -34,7 +34,7 @@ const AnimatedNumber = ({ value, label }) => {
   return (
     <div className="card border-0 shadow-sm h-100 number-card">
       <div className="card-body">
-        <div className="display-4 fw-bold text-primary mb-2">{count}{value.toString().includes('+') ? '+' : ''}</div>
+        <div className="display-4 fw-bold mb-2" style={{ color }}>{count}{value.toString().includes('+') ? '+' : ''}</div>
         <h5 className="text-muted mb-0">{label}</h5>
       </div>
     </div>
@@ -252,16 +252,16 @@ const Sources = () => {
             <p className="text-muted">Our achievements in numbers</p>
           </div>
           <div className="col-md-3 text-center mb-4 mb-md-0 fade-in-up delay-1">
-            <AnimatedNumber value={1995} label="Established Year" />
+            <AnimatedNumber value={1995} label="Established Year" style={{color: '#b78f59'}} />
           </div>
           <div className="col-md-3 text-center mb-4 mb-md-0 fade-in-up delay-2">
-            <AnimatedNumber value={12} label="Countries of Import" />
+            <AnimatedNumber value={12} label="Countries of Import" style={{color: '#b78f59'}} />
           </div>
           <div className="col-md-3 text-center mb-4 mb-md-0 fade-in-up delay-3">
-            <AnimatedNumber value={25} label="Countries of Export" />
+            <AnimatedNumber value={25} label="Countries of Export" style={{color: '#b78f59'}} />
           </div>
           <div className="col-md-3 text-center fade-in-up delay-4">
-            <AnimatedNumber value={5000} label="Orders Fulfilled" />
+            <AnimatedNumber value={5000} label="Orders Fulfilled" style={{color: '#b78f59'}} />
           </div>
         </div>
 

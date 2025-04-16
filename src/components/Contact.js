@@ -28,7 +28,7 @@ const Contact = () => {
                     <label htmlFor="message" className="form-label">Message</label>
                     <textarea className="form-control" id="message" rows="4" required></textarea>
                   </div>
-                  <button type="submit" className="btn btn-primary">Submit</button>
+                  <button type="submit" className="btn" style={{backgroundColor: '#b78f59', borderColor: '#b78f59'}}>Submit</button>
                 </form>
               </div>
             </div>
@@ -38,28 +38,28 @@ const Contact = () => {
               <div className="card-body p-4">
                 <h4 className="mb-4">Our Office</h4>
                 <div className="d-flex mb-3">
-                  <i className="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
+                  <i className="fas fa-map-marker-alt me-3 mt-1" style={{color: '#b78f59'}}></i>
                   <p>123 Stone Street, Granite City, 12345, Country</p>
                 </div>
                 <div className="d-flex mb-3">
-                  <i className="fas fa-phone text-primary me-3 mt-1"></i>
+                  <i className="fas fa-phone me-3 mt-1" style={{color: '#b78f59'}}></i>
                   <p>+1 (555) 123-4567</p>
                 </div>
                 <div className="d-flex mb-3">
-                  <i className="fas fa-envelope text-primary me-3 mt-1"></i>
+                  <i className="fas fa-envelope me-3 mt-1" style={{color: '#b78f59'}}></i>
                   <p>info@globalstoneexports.com</p>
                 </div>
                 <div className="d-flex mb-3">
-                  <i className="fas fa-clock text-primary me-3 mt-1"></i>
+                  <i className="fas fa-clock me-3 mt-1" style={{color: '#b78f59'}}></i>
                   <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
                 </div>
                 <div className="mt-4">
                   <h5>Follow Us</h5>
                   <div className="d-flex">
-                    <a href="#" className="me-3 text-dark fs-4"><i className="fab fa-facebook"></i></a>
-                    <a href="#" className="me-3 text-dark fs-4"><i className="fab fa-instagram"></i></a>
-                    <a href="#" className="me-3 text-dark fs-4"><i className="fab fa-linkedin"></i></a>
-                    <a href="#" className="text-dark fs-4"><i className="fab fa-twitter"></i></a>
+                    <a href="#" className="me-3 fs-4" style={{color: '#b78f59'}}><i className="fab fa-facebook"></i></a>
+                    <a href="#" className="me-3 fs-4" style={{color: '#b78f59'}}><i className="fab fa-instagram"></i></a>
+                    <a href="#" className="me-3 fs-4" style={{color: '#b78f59'}}><i className="fab fa-linkedin"></i></a>
+                    <a href="#" className="fs-4" style={{color: '#b78f59'}}><i className="fab fa-twitter"></i></a>
                   </div>
                 </div>
               </div>
