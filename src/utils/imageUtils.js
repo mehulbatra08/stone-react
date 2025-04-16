@@ -1,13 +1,3 @@
-// Function to get the correct file extension
-const getFileExtension = (name) => {
-  if (name.includes('.jpeg')) return 'jpeg';
-  if (name.includes('.jpg')) return 'jpg';
-  if (name.includes('.png')) return 'png';
-  if (name.includes('.webp')) return 'webp';
-  // Default to jpeg if no extension in name
-  return 'jpeg';
-};
-
 // Function to get all images from a specific category
 export const getImagesByCategory = (category) => {
   // List of image names for each category

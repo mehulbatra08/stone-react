@@ -56,10 +56,10 @@ const Contact = () => {
                 <div className="mt-4">
                   <h5>Follow Us</h5>
                   <div className="d-flex">
-                    <a href="#" className="me-3 fs-4" style={{color: '#b78f59'}}><i className="fab fa-facebook"></i></a>
-                    <a href="#" className="me-3 fs-4" style={{color: '#b78f59'}}><i className="fab fa-instagram"></i></a>
-                    <a href="#" className="me-3 fs-4" style={{color: '#b78f59'}}><i className="fab fa-linkedin"></i></a>
-                    <a href="#" className="fs-4" style={{color: '#b78f59'}}><i className="fab fa-twitter"></i></a>
+                    <a href="https://facebook.com" className="me-3 fs-4" style={{color: '#b78f59'}}><i className="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com" className="me-3 fs-4" style={{color: '#b78f59'}}><i className="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" className="me-3 fs-4" style={{color: '#b78f59'}}><i className="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com" className="fs-4" style={{color: '#b78f59'}}><i className="fab fa-twitter"></i></a>
                   </div>
                 </div>
               </div>
