@@ -1,7 +1,7 @@
 import React from 'react';
-import GraniteGallery from '../components/GraniteGallery';
+import Products from '../components/Products';
 
-const Products = () => {
+const ProductsPage = () => {
   return (
     <div>
       <div className="py-5 bg-primary text-white">
@@ -12,9 +12,9 @@ const Products = () => {
           </p>
         </div>
       </div>
-      <GraniteGallery />
+      <Products />
     </div>
   );
 };
 
-export default Products; 
+export default ProductsPage; 

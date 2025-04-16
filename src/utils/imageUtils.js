@@ -356,7 +356,7 @@ export const getImagesByCategory = (category) => {
     }));
   } else if (category === 'monuments') {
     return monumentImages.map(item => ({
-      name: item.name.split('-300x300')[0].replace(/[0-9]+\.-/g, '').replace(/-[0-9]$/, '').replace(/-/g, ' '),
+      name: item.name.split('-300x300')[0].replace(/[0-9]+\.-/g, '').replace(/-/g, ' '),
       path: `/images/monuments/${item.name}.${item.ext}`,
       category: 'monuments'
     }));
@@ -368,7 +368,7 @@ export const getImagesByCategory = (category) => {
     }));
   } else if (category === 'slate') {
     return slateImages.map(item => ({
-      name: item.name.split('-300x300')[0].replace(/[0-9]+\.-/g, '').replace(/-[0-9]$/, '').replace(/-/g, ' '),
+      name: item.name.split('-300x300')[0].replace(/[0-9]+\.-/g, '').replace(/-/g, ' '),
       path: `/images/slate/${item.name}.${item.ext}`,
       category: 'slate'
     }));

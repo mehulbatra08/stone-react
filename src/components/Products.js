@@ -33,12 +33,13 @@ const Products = () => {
       <h1 className="text-center mb-5">Our Stone Collection</h1>
       
       {/* Category Filter */}
-      <div className="d-flex flex-wrap justify-content-center gap-2 mb-4">
+      <div className="d-flex flex-wrap justify-content-center gap-2 mb-4" style={{ maxWidth: '100%', overflowX: 'auto' }}>
         {categories.map(category => (
           <button
             key={category.id}
             className={`btn ${selectedCategory === category.id ? 'btn-primary' : 'btn-outline-primary'}`}
             onClick={() => setSelectedCategory(category.id)}
+            style={{ whiteSpace: 'nowrap' }}
           >
             {category.name}
           </button>
