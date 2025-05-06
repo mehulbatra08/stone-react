@@ -35,7 +35,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/#about">About Us</a>
+              <Link className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} to="/about">About Us</Link>
             </li>
             <li className="nav-item">
               <Link 
@@ -46,7 +46,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/#process">Our Process</a>
+              <Link className={`nav-link ${location.pathname === '/process' ? 'active' : ''}`} to="/process">Our Process</Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/#testimonials">Testimonials</a>

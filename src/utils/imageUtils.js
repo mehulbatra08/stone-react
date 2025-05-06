@@ -232,33 +232,20 @@ export const getImagesByCategory = (category) => {
   ];
 
   const monumentImages = [
-    { name: '1.-Angel-Engraved-Black-Granite-Monument-300x300', ext: 'jpg' },
-    { name: '2.-Triple-Heart-Granite-Headstone-300x300', ext: 'jpg' },
-    { name: '3.-European-Styled-Premium-Black-Granite-Monument-300x300', ext: 'jpg' },
     { name: '5.-Angel-Heart-Upright-Memorial-300x300', ext: 'jpg' },
-    { name: '6.-European-Styled-Granite-Monument-300x300', ext: 'jpg' },
     { name: '7.-Heart-Shaped-Black-Granite-Monument-1-300x300', ext: 'jpg' },
     { name: '8.-Indian-Red-Headstone-with-Base-300x300', ext: 'jpg' },
-    { name: '9.-USA-Flag-Replica-Granite-Monument-300x300', ext: 'jpg' },
     { name: '10.-European-Styled-Cross-Engraved-Granite-Monument-300x300', ext: 'jpg' },
     { name: '11.-Black-Granite-Headstone-with-Base-300x300', ext: 'jpg' },
-    { name: '12.-Black-Granite-Monument-300x300', ext: 'jpg' },
-    { name: '15.-European-Styled-Granite-Monument-2-300x300', ext: 'jpg' },
-    { name: '16.-Cera-Grey-Headstone-with-Base-300x300', ext: 'jpg' },
-    { name: '17.-Customised-Granite-Headstone-300x300', ext: 'jpg' },
     { name: '19.-Russian-Styled-Black-Granite-Monument-300x300', ext: 'jpg' },
     { name: '20.-Cross-Shaped-Monument-300x300', ext: 'jpg' },
-    { name: '21.-Angel-Shaped-Headstone-300x300', ext: 'jpg' },
     { name: '22.-Mahagani-Brown-Granite-Headstone-with-Base-300x300', ext: 'jpg' },
     { name: '23.-Heart-Shaped-Vizag-Blue-Granite-Monument-300x300', ext: 'jpg' },
     { name: '24.-Jet-Black-Granite-Headstone-with-Base-1-300x300', ext: 'jpg' },
-    { name: '25.-Customised-Black-Granite-Monument-300x300', ext: 'jpg' },
     { name: '26.-Blue-Pearl-Headstone-300x300', ext: 'jpg' },
     { name: '27.-Black-Granite-Headstone-with-Rockpitch-Finish-Base-300x300', ext: 'jpg' },
     { name: '28.-Black-Granite-Monument-2-300x300', ext: 'jpg' },
     { name: '29.-Tree-Shaped-Granite-Monument-300x300', ext: 'jpg' },
-    { name: '30.-Vases-300x300', ext: 'jpg' },
-    { name: '31.-Customised-Granite-Monument-300x300', ext: 'jpg' },
     { name: '32.-Black-Granite-Tombstone-300x300', ext: 'jpg' },
     { name: '33.-Angel-Shaped-Granite-Monument-300x300', ext: 'jpg' }
   ];

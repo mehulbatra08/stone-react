@@ -22,7 +22,7 @@ const About = () => {
                   <h3 className="mb-0">Our Mission</h3>
                 </div>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item border-0 bg-transparent d-flex align-items-center">
+                  <li className="list-group-item border-0 bg-transparent d-flex align-items-center"s>
                     <i className="fas fa-check-circle text-success me-3"></i>
                     <span>Provide highest possible quality stones at most competitive price possible.</span>
                   </li>
