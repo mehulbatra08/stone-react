@@ -8,8 +8,8 @@ const ProductsPage = () => {
       <section className="d-flex align-items-center justify-content-center text-white" style={{ minHeight: '40vh', background: 'linear-gradient(120deg, #b78f59 60%, #fffbe6 100%)' }}>
         <div className="container text-center py-5">
           <h1 className="display-4 fw-bold mb-3">Our Products</h1>
-          <p className="lead mb-4">Discover our extensive collection of premium quality natural stones, crafted to perfection for your unique needs.</p>
-          {/* <a href="#product-highlights" className="btn btn-light btn-lg px-4 shadow text fw-semibold">Explore Collection</a> */}
+          <p className="lead mb-4">Discover our journey, values, and what makes us a global leader in natural stone exports.</p>
+          
         </div>
       </section>
 

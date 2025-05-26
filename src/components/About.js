@@ -1,68 +1,37 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   return (
-    <section id="about" className="py-5 bg-light">
+    <section id="process" className="py-5">
       <div className="container">
-        <div className="row">
-          <div className="col-12">
+        <div className="row align-items-center">
+          {/* Left Column - Image */}
+          <div className="col-lg-6 mb-4 mb-lg-0">
+            <div className="position-relative">
+              <img 
+                src="/images/Hero-Section/company-build.jpg" 
+                alt="About Our Company" 
+                className="img-fluid rounded shadow"
+                style={{ width: '100%', height: 'auto' }}
+              />
+              <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25 rounded"></div>
+            </div>
+          </div>
+
+          {/* Right Column - Content */}
+          <div className="col-lg-6">
             <h2 className="fw-bold mb-4">About Our Company</h2>
-            <p className="lead">We specialize in importing and exporting high-quality natural stones, delivering premium products to customers worldwide on schedule.</p>
-          </div>
-        </div>
-        
-        <div className="row mt-5">
-          <div className="col-md-6">
-            <div className="card h-100 border-0 shadow-sm">
-              <div className="card-body p-4">
-                <div className="d-flex align-items-center mb-4">
-                  <div className="text-white rounded-circle d-flex align-items-center justify-content-center me-3" style={{width: '50px', height: '50px', backgroundColor: '#b78f59'}}>
-                    <i className="fas fa-bullseye fa-lg"></i>
-                  </div>
-                  <h3 className="mb-0">Our Mission</h3>
-                </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item border-0 bg-transparent d-flex align-items-center"s>
-                    <i className="fas fa-check-circle text-success me-3"></i>
-                    <span>Provide highest possible quality stones at most competitive price possible.</span>
-                  </li>
-                  <li className="list-group-item border-0 bg-transparent d-flex align-items-center">
-                    <i className="fas fa-check-circle text-success me-3"></i>
-                    <span>Re-define lifestyle standards by discovering natural stones and delivering exquisite monuments, cobbles, slabs, etc.</span>
-                  </li>
-                  <li className="list-group-item border-0 bg-transparent d-flex align-items-center">
-                    <i className="fas fa-check-circle text-success me-3"></i>
-                    <span>Strive towards growth and being recognized as the most reliable exporter in the world.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="card h-100 border-0 shadow-sm">
-              <div className="card-body p-4">
-                <div className="d-flex align-items-center mb-4">
-                  <div className="text-white rounded-circle d-flex align-items-center justify-content-center me-3" style={{width: '50px', height: '50px', backgroundColor: '#b78f59'}}>
-                    <i className="fas fa-eye fa-lg"></i>
-                  </div>
-                  <h3 className="mb-0">Our Vision</h3>
-                </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item border-0 bg-transparent d-flex align-items-center">
-                    <i className="fas fa-star text-warning me-3"></i>
-                    <span>Always keep our core values at forefront and preserve a safe, friendly environment for our employees.</span>
-                  </li>
-                  <li className="list-group-item border-0 bg-transparent d-flex align-items-center">
-                    <i className="fas fa-star text-warning me-3"></i>
-                    <span>Constantly prioritize customer satisfaction and maintain customer relations and loyalty.</span>
-                  </li>
-                  <li className="list-group-item border-0 bg-transparent d-flex align-items-center">
-                    <i className="fas fa-star text-warning me-3"></i>
-                    <span>Thrive towards becoming a sustainable business and improving people's lives.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <p className="lead mb-4">We specialize in importing and exporting high-quality natural stones, delivering premium products to customers worldwide on schedule.</p>
+            <p className="mb-4">With over two decades of experience in the natural stone industry, we have established ourselves as a trusted name in the global market. Our commitment to excellence, quality, and customer satisfaction has made us a preferred choice for architects, builders, and homeowners worldwide.</p>
+            <p className="mb-4">Our extensive collection includes premium granite, marble, limestone, sandstone, and slate, sourced from the finest quarries across India. Each stone is carefully selected, processed, and finished to meet international standards, ensuring that our clients receive nothing but the best.</p>
+            <Link 
+              to="/about" 
+              className="btn btn-primary px-4 py-2"
+              style={{ backgroundColor: '#b78f59', borderColor: '#b78f59' }}
+            >
+              Read More
+            </Link>
           </div>
         </div>
       </div>

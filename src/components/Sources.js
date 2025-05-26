@@ -1,165 +1,37 @@
-import React, { memo, useEffect, useState } from 'react';
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-  Line,
-  Marker,
-  ZoomableGroup
-} from 'react-simple-maps';
-
-// Use a reliable TopoJSON source
-const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // Animation for counting up numbers
 const AnimatedNumber = ({ value, label, color = '#b78f59' }) => {
   const [count, setCount] = useState(0);
+  const hasPlus = typeof value === 'string' && value.includes('+');
+  const numericValue = hasPlus ? parseInt(value) : value;
   
   useEffect(() => {
-    const duration = 2000; // 2 seconds
+    const duration = 2000;
     const steps = 50;
-    const stepValue = value / steps;
+    const stepValue = numericValue / steps;
     const stepTime = duration / steps;
     
     let current = 0;
     const timer = setInterval(() => {
       current += 1;
-      setCount(Math.min(Math.floor(stepValue * current), value));
+      setCount(Math.min(Math.floor(stepValue * current), numericValue));
       if (current >= steps) clearInterval(timer);
     }, stepTime);
     
     return () => clearInterval(timer);
-  }, [value]);
+  }, [numericValue]);
   
   return (
     <div className="card border-0 shadow-sm h-100 number-card">
       <div className="card-body">
-        <div className="display-4 fw-bold mb-2" style={{ color }}>{count}{value.toString().includes('+') ? '+' : ''}</div>
+        <div className="display-4 fw-bold mb-2" style={{ color }}>{count}{hasPlus ? '+' : ''}</div>
         <h5 className="text-muted mb-0">{label}</h5>
       </div>
     </div>
   );
 };
-
-const MapChart = memo(() => {
-  // Source point (India)
-  const source = { coordinates: [78.9629, 20.5937], name: "India" };
-
-  // Export destinations grouped by region
-  const destinations = [
-    { coordinates: [15, 45], name: "Europe", region: "Europe" },
-    { coordinates: [51, 25], name: "Middle East", region: "Middle East" }
-  ];
-
-  return (
-    <div style={{ width: "100%", height: "600px", background: "#F8F9FA" }}>
-      <ComposableMap
-        projection="geoMercator"
-        projectionConfig={{
-          scale: 200,
-          center: [65, 30]
-        }}
-        style={{
-          width: "100%",
-          height: "100%"
-        }}
-      >
-        <ZoomableGroup>
-          <Geographies geography={geoUrl}>
-            {({ geographies }) =>
-              geographies.map((geo) => (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  fill="#E5E5E5"
-                  stroke="#FFFFFF"
-                  strokeWidth={0.5}
-                  style={{
-                    default: { outline: "none" },
-                    hover: {
-                      fill: "#D6D6DA",
-                      outline: "none",
-                      transition: "all 0.3s ease-in-out"
-                    },
-                    pressed: { outline: "none" }
-                  }}
-                />
-              ))
-            }
-          </Geographies>
-
-          {/* Source Marker */}
-          <Marker coordinates={source.coordinates}>
-            <g transform="translate(-12, -24)">
-              <path
-                d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"
-                fill="#E63946"
-                fillRule="evenodd"
-                strokeWidth="1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </g>
-            <text
-              textAnchor="middle"
-              y={-30}
-              style={{
-                fontFamily: "system-ui",
-                fill: "#E63946",
-                fontSize: "14px",
-                fontWeight: "bold"
-              }}
-            >
-              {source.name}
-            </text>
-          </Marker>
-
-          {/* Destination Markers and Lines */}
-          {destinations.map((destination, index) => (
-            <React.Fragment key={index}>
-              <Line
-                from={source.coordinates}
-                to={destination.coordinates}
-                stroke="#E63946"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeDasharray="6,4"
-                style={{
-                  opacity: 0.6
-                }}
-              />
-              <Marker coordinates={destination.coordinates}>
-                <g transform="translate(-6, -12)">
-                  <path
-                    d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"
-                    fill="#E63946"
-                    fillRule="evenodd"
-                    strokeWidth="1"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    style={{ transform: "scale(0.75)" }}
-                  />
-                </g>
-                <text
-                  textAnchor="middle"
-                  y={-20}
-                  style={{
-                    fontFamily: "system-ui",
-                    fill: "#E63946",
-                    fontSize: "16px",
-                    fontWeight: "bold"
-                  }}
-                >
-                  {destination.name}
-                </text>
-              </Marker>
-            </React.Fragment>
-          ))}
-        </ZoomableGroup>
-      </ComposableMap>
-    </div>
-  );
-});
 
 const Sources = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -232,93 +104,288 @@ const Sources = () => {
             animation: float 3s ease-in-out infinite;
           }
 
-          .map-container {
-            transition: all 0.3s ease;
-            transform-style: preserve-3d;
-            perspective: 1000px;
+          .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            border-radius: 0.5rem;
           }
 
-          .map-container:hover {
-            transform: rotateX(5deg) rotateY(5deg);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+          .process-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease;
+          }
+
+          .process-image:hover {
+            transform: scale(1.05);
           }
         `}
       </style>
       <div className="container">
-        {/* Our Numbers Section */}
-        <div className={`row mb-5 ${isVisible ? 'visible' : ''}`}>
-          <div className="text-center mb-5 fade-in-up">
-            <h2 className="fw-bold">Our Numbers</h2>
-            <p className="text-muted">Our achievements in numbers</p>
-          </div>
-          <div className="col-md-3 text-center mb-4 mb-md-0 fade-in-up delay-1">
-            <AnimatedNumber value={1995} label="Established Year" style={{color: '#b78f59'}} />
-          </div>
-          <div className="col-md-3 text-center mb-4 mb-md-0 fade-in-up delay-2">
-            <AnimatedNumber value={12} label="Countries of Import" style={{color: '#b78f59'}} />
-          </div>
-          <div className="col-md-3 text-center mb-4 mb-md-0 fade-in-up delay-3">
-            <AnimatedNumber value={25} label="Countries of Export" style={{color: '#b78f59'}} />
-          </div>
-          <div className="col-md-3 text-center fade-in-up delay-4">
-            <AnimatedNumber value={5000} label="Orders Fulfilled" style={{color: '#b78f59'}} />
+        {/* Hero Image with Overlay */}
+        <div className="position-relative mb-5 rounded overflow-hidden fade-in-up" style={{ height: '300px' }}>
+          <img 
+            src="/images/Hero-Section/company-build.jpg" 
+            alt="Global Operations" 
+            className="w-100 h-100"
+            style={{ objectFit: 'cover' }}
+          />
+          <div className="image-overlay"></div>
+          <div className="position-absolute bottom-0 start-0 p-4 text-white">
+            <h2 className="fw-bold mb-2">Our Global Presence</h2>
+            <p className="lead mb-0">Delivering excellence across continents</p>
           </div>
         </div>
 
-        {/* Our Global Reach Section */}
-        <h2 className="text-center fw-bold mb-5 fade-in-up">Our Global Reach</h2>
-        <div className="row mb-5">
-          <div className="col-md-6 fade-in-up delay-1">
-            <div className="card border-0 shadow-sm h-100 floating">
+        {/* Our Numbers Section */}
+        <div className={`row g-4 mb-5 ${isVisible ? 'visible' : ''}`}>
+          <div className="col-md-4 pt-2 text-center mb-4 mb-md-0 fade-in-up delay-1">
+            <AnimatedNumber value={1995} label="Established Year" style={{color: '#b78f59'}} />
+          </div>
+          <div className="col-md-4 pt-2 text-center mb-4 mb-md-0 fade-in-up delay-2">
+            <AnimatedNumber value={25} label="Countries of Export" style={{color: '#b78f59'}} />
+          </div>
+          <div className="col-md-4 pt-2 text-center mb-4 mb-md-0 fade-in-up delay-3">
+            <AnimatedNumber value="5000+" label="Orders Fulfilled" style={{color: '#b78f59'}} />
+          </div>
+          <div className="col-md-4 pt-2 text-center mb-4 mb-md-0 fade-in-up delay-1">
+            <AnimatedNumber value={12} label="Countries of Import" style={{color: '#b78f59'}} />
+          </div>
+          <div className="col-md-4 pt-2 text-center mb-4 mb-md-0 fade-in-up delay-2">
+            <AnimatedNumber value={15} label="Mining Units" style={{color: '#b78f59'}} />
+          </div>
+          <div className="col-md-4 pt-2 text-center mb-4 mb-md-0 fade-in-up delay-3">
+            <AnimatedNumber value={8} label="Manufacturing Units" style={{color: '#b78f59'}} />
+          </div>
+        </div>
+
+        {/* Process Images Grid */}
+        <div className="row g-4 mb-5">
+          <div className="col-md-4 fade-in-up delay-1">
+            <div className="card border-0 shadow-sm h-100">
+              <img 
+                src="/images/process-images/Mining.jpg" 
+                alt="Mining Process" 
+                className="process-image"
+                onError={(e) => {
+                  console.error('Error loading Mining image');
+                  e.target.style.display = 'none';
+                }}
+              />
               <div className="card-body">
-                <h3 className="card-title h4 mb-4">Our Sources</h3>
-                <p className="text-muted">
-                  We source our premium quality stones from the finest quarries across India, including:
-                </p>
-                <ul className="list-unstyled">
-                  <li className="mb-3">
-                    <i className="fas fa-map-marker-alt text-primary me-2"></i>
-                    South India - Known for Black Galaxy, Absolute Black, and Premium Black Granite
-                  </li>
-                  <li className="mb-3">
-                    <i className="fas fa-map-marker-alt text-primary me-2"></i>
-                    North India - Famous for Imperial Red, Alaska White, and Crystal Yellow Granite
-                  </li>
-                  <li className="mb-3">
-                    <i className="fas fa-map-marker-alt text-primary me-2"></i>
-                    Rajasthan - Source of premium Marbles and unique Granite varieties
-                  </li>
-                </ul>
+                <h5 className="card-title">Mining Excellence</h5>
+                <p className="card-text text-muted">Advanced mining techniques ensuring premium quality stone extraction.</p>
               </div>
             </div>
           </div>
-          <div className="col-md-6 fade-in-up delay-2">
-            <div className="card border-0 shadow-sm h-100 floating">
+          <div className="col-md-4 fade-in-up delay-2">
+            <div className="card border-0 shadow-sm h-100">
+              <img 
+                src="/images/process-images/manufacturing.jpg" 
+                alt="Manufacturing Process" 
+                className="process-image"
+                onError={(e) => {
+                  console.error('Error loading Manufacturing image');
+                  e.target.style.display = 'none';
+                }}
+              />
               <div className="card-body">
-                <h3 className="card-title h4 mb-4">Export Destinations</h3>
-                <div className="row">
-                  <div className="col-sm-6">
-                    <div className="mb-4">
-                      <h4 className="h5 mb-3">Europe</h4>
-                      <p className="text-muted mb-0">Major exports to various European countries including Germany, France, and Italy.</p>
-                    </div>
-                  </div>
-                  <div className="col-sm-6">
-                    <div className="mb-4">
-                      <h4 className="h5 mb-3">Middle East</h4>
-                      <p className="text-muted mb-0">Strong presence in Middle Eastern markets including UAE, Saudi Arabia, and Qatar.</p>
-                    </div>
-                  </div>
+                <h5 className="card-title">Precision Manufacturing</h5>
+                <p className="card-text text-muted">State-of-the-art facilities for perfect stone processing.</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4 fade-in-up delay-3">
+            <div className="card border-0 shadow-sm h-100">
+              <img 
+                src="/images/process-images/packaging.jpg" 
+                alt="Packaging Process" 
+                className="process-image"
+                onError={(e) => {
+                  console.error('Error loading Packaging image');
+                  e.target.style.display = 'none';
+                }}
+              />
+              <div className="card-body">
+                <h5 className="card-title">Secure Packaging</h5>
+                <p className="card-text text-muted">Custom packaging solutions for safe global delivery.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Additional Process Images */}
+        <div className="row g-4 mb-5">
+          <div className="col-md-4 fade-in-up delay-1">
+            <div className="card border-0 shadow-sm h-100">
+              <img 
+                src="/images/process-images/export.jpg" 
+                alt="Export Process" 
+                className="process-image"
+                onError={(e) => {
+                  console.error('Error loading Export image');
+                  e.target.style.display = 'none';
+                }}
+              />
+              <div className="card-body">
+                <h5 className="card-title">Global Export</h5>
+                <p className="card-text text-muted">Efficient logistics and worldwide delivery network.</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4 fade-in-up delay-2">
+            <div className="card border-0 shadow-sm h-100">
+              <img 
+                src="/images/process-images/team.jpg" 
+                alt="Quality Team" 
+                className="process-image"
+                onError={(e) => {
+                  console.error('Error loading Team image');
+                  e.target.style.display = 'none';
+                }}
+              />
+              <div className="card-body">
+                <h5 className="card-title">Expert Team</h5>
+                <p className="card-text text-muted">Skilled professionals ensuring quality at every step.</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4 fade-in-up delay-3">
+            <div className="card border-0 shadow-sm h-100">
+              <img 
+                src="/images/process-images/technology.jpg" 
+                alt="Technology" 
+                className="process-image"
+                onError={(e) => {
+                  console.error('Error loading Technology image');
+                  e.target.style.display = 'none';
+                }}
+              />
+              <div className="card-body">
+                <h5 className="card-title">Advanced Technology</h5>
+                <p className="card-text text-muted">Cutting-edge equipment for precision processing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Our Machines Section */}
+        <div className="container mb-5">
+          <h2 className="text-center mb-5 fw-bold">Our State-of-the-Art Machinery</h2>
+          <div className="row g-4">
+            <div className="col-md-6 col-lg-4 fade-in-up delay-1">
+              <div className="card border-0 shadow-sm h-100">
+                <img 
+                  src="/images/our-machines/1.-Granite-Multiwire-Gangsaw.png" 
+                  alt="Granite Multiwire Gangsaw" 
+                  className="process-image"
+                  onError={(e) => {
+                    console.error('Error loading Granite Multiwire Gangsaw image');
+                    e.target.style.display = 'none';
+                  }}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Granite Multiwire Gangsaw</h5>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4 fade-in-up delay-2">
+              <div className="card border-0 shadow-sm h-100">
+                <img 
+                  src="/images/our-machines/2.-Gangsaw-Sawing-Machine.jpg" 
+                  alt="Gangsaw Sawing Machine" 
+                  className="process-image"
+                  onError={(e) => {
+                    console.error('Error loading Gangsaw Sawing Machine image');
+                    e.target.style.display = 'none';
+                  }}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Gangsaw Sawing Machine</h5>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4 fade-in-up delay-3">
+              <div className="card border-0 shadow-sm h-100">
+                <img 
+                  src="/images/our-machines/3.-Vertical-Slab-Multi-Cutter.jpg" 
+                  alt="Vertical Slab Multi Cutter" 
+                  className="process-image"
+                  onError={(e) => {
+                    console.error('Error loading Vertical Slab Multi Cutter image');
+                    e.target.style.display = 'none';
+                  }}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Vertical Slab Multi Cutter</h5>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4 fade-in-up delay-1">
+              <div className="card border-0 shadow-sm h-100">
+                <img 
+                  src="/images/our-machines/4.-Resin-Line.jpg" 
+                  alt="Resin Line" 
+                  className="process-image"
+                  onError={(e) => {
+                    console.error('Error loading Resin Line image');
+                    e.target.style.display = 'none';
+                  }}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Resin Line</h5>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4 fade-in-up delay-2">
+              <div className="card border-0 shadow-sm h-100">
+                <img 
+                  src="/images/our-machines/5.-Single-Blade-Auto-Bridge-Cutting-Machine.jpg" 
+                  alt="Single Blade Auto Bridge Cutting Machine" 
+                  className="process-image"
+                  onError={(e) => {
+                    console.error('Error loading Single Blade Auto Bridge Cutting Machine image');
+                    e.target.style.display = 'none';
+                  }}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Single Blade Auto Bridge Cutting Machine</h5>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4 fade-in-up delay-3">
+              <div className="card border-0 shadow-sm h-100">
+                <img 
+                  src="/images/our-machines/6.-Auto-Polisher.jpg" 
+                  alt="Auto Polisher" 
+                  className="process-image"
+                  onError={(e) => {
+                    console.error('Error loading Auto Polisher image');
+                    e.target.style.display = 'none';
+                  }}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">Auto Polisher</h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
-        <div className="card border-0 shadow-sm map-container fade-in-up delay-3">
-          <div className="card-body p-0">
-            <MapChart />
-          </div>
+
+        <div className="container text-center mt-4">
+          <Link 
+            to="/process" 
+            className="btn btn-primary px-4 py-2 fade-in-up delay-3"
+            style={{ backgroundColor: '#b78f59', borderColor: '#b78f59' }}
+          >
+            Read More
+          </Link>
         </div>
       </div>
     </section>
