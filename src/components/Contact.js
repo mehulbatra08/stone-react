@@ -78,7 +78,7 @@ const Contact = () => {
               <div className="card border-0 shadow-sm">
                 <div className="card-body p-0">
                   <div className="ratio ratio-16x9 rounded-bottom overflow-hidden">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14612.975409527537!2d90.497437!3d23.7029844!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1589867989634!5m2!1sen!2sbd" style={{border:0, width:'100%', height:'100%', minHeight:'350px'}} allowFullScreen="" aria-hidden="false" tabIndex="0" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14612.975409527537!2d90.497437!3d23.7029844!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1589867989634!5m2!1sen!2sbd" style={{border:0, width:'100%', height:'100%', minHeight:'350px'}} allowFullScreen="" aria-hidden="false" tabIndex="0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Our Location on Google Maps"></iframe>
                   </div>
                 </div>
               </div>

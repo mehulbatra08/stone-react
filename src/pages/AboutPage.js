@@ -1,5 +1,4 @@
 import React from 'react';
-import About from '../components/About';
 import { useNavigate } from 'react-router-dom';
 import Sources from '../components/Sources';
 
