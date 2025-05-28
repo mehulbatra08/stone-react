@@ -13,27 +13,24 @@ const mockProductDetails = {
   categories: 'Granite Price List, Granite Stone For Floor, Granite Stone For Kitchen, North Indian Granite Manufacturer & Exporter From India, Red Granite'
 };
 
-const Products = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+const Products = ({ selectedCategory }) => {
   const [modalProduct, setModalProduct] = useState(null);
-
-  const categories = [
-    { id: 'all', name: 'All' },
-    { id: 'south-granite', name: 'South Granite' },
-    { id: 'granite', name: 'North Granite' },
-    { id: 'granite-blocks', name: 'Granite Blocks' },
-    { id: 'granite-cutter-slabs', name: 'Granite Cutter Slabs' },
-    { id: 'granite-gangsaw-slabs', name: 'Granite Gangsaw Slabs' },
-    { id: 'limestone', name: 'Limestone' },
-    { id: 'marble', name: 'Marble' },
-    { id: 'monuments', name: 'Monuments' },
-    { id: 'sandstone', name: 'Sandstone' },
-    { id: 'slate', name: 'Slate' }
-  ];
 
   const getImages = () => {
     if (selectedCategory === 'all') {
-      return categories.slice(1).flatMap(category => {
+      const allCategories = [
+        { id: 'south-granite', name: 'South Granite' },
+        { id: 'granite', name: 'North Granite' },
+        { id: 'granite-blocks', name: 'Granite Blocks' },
+        { id: 'granite-cutter-slabs', name: 'Granite Cutter Slabs' },
+        { id: 'granite-gangsaw-slabs', name: 'Granite Gangsaw Slabs' },
+        { id: 'limestone', name: 'Limestone' },
+        { id: 'marble', name: 'Marble' },
+        { id: 'monuments', name: 'Monuments' },
+        { id: 'sandstone', name: 'Sandstone' },
+        { id: 'slate', name: 'Slate' }
+      ];
+      return allCategories.flatMap(category => {
         const images = getImagesByCategory(category.id);
         return images || [];
       });
@@ -45,20 +42,6 @@ const Products = () => {
     <div className="container py-5">
       <h1 className="text-center mb-5">Our Stone Collection</h1>
       
-      {/* Category Filter */}
-      <div className="d-flex flex-wrap justify-content-center gap-2 mb-4" style={{ maxWidth: '100%', overflowX: 'auto' }}>
-        {categories.map(category => (
-          <button
-            key={category.id}
-            className={`btn ${selectedCategory === category.id ? 'btn-primary' : 'btn-outline-primary'}`}
-            onClick={() => setSelectedCategory(category.id)}
-            style={{ whiteSpace: 'nowrap' }}
-          >
-            {category.name}
-          </button>
-        ))}
-      </div>
-
       {/* Product Grid */}
       <div className="row g-4">
         {getImages().map((image, index) => (

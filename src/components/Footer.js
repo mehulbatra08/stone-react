@@ -30,25 +30,29 @@ const Footer = () => {
           </div>
 
           {/* Address */}
-          <div className="col-md-4">
+          <div className="col-md-5">
             <h5>Address</h5>
-            <p className="mb-1"><strong>Office:</strong> [Your Office Address]</p>
-            <p className="mb-1"><strong>Mining:</strong> [Your Mining Address]</p>
-            <p className="mb-1"><strong>Manufacturing:</strong> [Your Manufacturing Address]</p>
+            <ul className="list-unstyled">
+              <li className="mb-2"><strong>Office:</strong> chawanda marmonite , siyana , Rajsamand 313332</li>
+              <li className="mb-2"><strong>Mines:</strong> Sai chawanda marble private limited Address- B-253, road no. 12 , mewar industrial, Udaipur 313001</li>
+              <li className="mb-2"><strong>Factory:</strong> hans marble pvt ltd Aagriya choraha , amet 313332</li>
+            </ul>
           </div>
 
           {/* Contact Info */}
-          <div className="col-md-3">
+          <div className="col-md-4">
             <h5>Contact Info</h5>
-            <p className="mb-1"><i className="fas fa-phone me-2"></i> Phone: [Your Phone Number]</p>
-            <p className="mb-1"><i className="fas fa-envelope me-2"></i> Email: [Your Email Address]</p>
-          </div>
+            <ul className="list-unstyled">
+              <li className="mb-2"><i className="fas fa-phone me-2"></i> Phone: +91 9413172337 /+8755555605</li>
+              <li className="mb-2"><i className="fas fa-envelope me-2"></i> Email: Info@chawandaexim.com</li>
+            </ul>
 
-          {/* Placeholder for Logo/Brand */}
-          <div className="col-md-2 text-center text-md-start">
-             {/* You can add a logo or brand name here later */}
-             {/* <img src="/images/Chawanda-Logo-No-Bg.png" alt="Logo" height="50" /> */}
-             {/* <h5 className="mt-2">Chawanda</h5> */}
+            {/* Placeholder for Logo/Brand */}
+            <div className="mt-4 text-center text-md-start">
+               {/* You can add a logo or brand name here later */}
+               {/* <img src="/images/Chawanda-Logo-No-Bg.png" alt="Logo" height="50" /> */}
+               {/* <h5 className="mt-2">Chawanda</h5> */}
+            </div>
           </div>
         </div>
 
