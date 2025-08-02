@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sources from '../components/Sources';
 
 const AboutPage = () => {
   const navigate = useNavigate();
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const slideshowImages = [
+    '/images/process-images/technology.jpg',
+    '/images/process-images/team.jpg',
+    '/images/process-images/packaging.jpg',
+    '/images/process-images/Mining.jpg',
+    '/images/process-images/manufacturing.jpg',
+    '/images/process-images/export.jpg'
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === slideshowImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000); // Change image every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [slideshowImages.length]);
 
   const handleContactClick = (e) => {
     e.preventDefault();
@@ -13,11 +34,30 @@ const AboutPage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="d-flex align-items-center justify-content-center text-white" style={{ minHeight: '40vh', background: 'linear-gradient(120deg, #b78f59 60%, #fffbe6 100%)' }}>
+      <section className="d-flex align-items-center justify-content-center text-white position-relative" style={{ minHeight: '40vh' }}>
+        {/* Slideshow Background */}
+        <div 
+          className="position-absolute top-0 start-0 w-100 h-100"
+          style={{
+            backgroundImage: `url(${slideshowImages[currentImageIndex]})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'brightness(0.4)',
+            transition: 'background-image 0.5s ease-in-out'
+          }}
+        ></div>
+        {/* Overlay */}
+        <div 
+          className="position-absolute top-0 start-0 w-100 h-100"
+          style={{
+            // background: 'linear-gradient(120deg, rgba(183, 143, 89, 0.8) 60%, rgba(255, 251, 230, 0.8) 100%)'
+          }}
+        ></div>
         <div className="container text-center py-5">
-          <h1 className="display-4 fw-bold mb-3">About Us</h1>
-          <p className="lead mb-4">Discover our journey, values, and what makes us a global leader in natural stone exports.</p>
-          
+          <div className="position-relative" style={{ zIndex: 1 }}>
+            <h1 className="display-4 fw-bold mb-3">About Us</h1>
+            <p className="lead mb-4">Discover our journey, values, and what makes us a global leader in natural stone exports.</p>
+          </div>
         </div>
       </section>
 

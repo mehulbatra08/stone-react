@@ -13,6 +13,13 @@ import './App.css';
 // import ScrollToTop from './components/ScrollToTop';
 
 function App() {
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '919413172337'; // Your WhatsApp number
+    const message = 'Hello! I would like to know more about your products.'; // Default message
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <Router>
       <div className="App">
@@ -27,6 +34,31 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
         </Routes>
         <Footer />
+        {/* WhatsApp Floating Button */}
+        <div 
+          onClick={handleWhatsAppClick}
+          style={{
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            width: '60px',
+            height: '60px',
+            backgroundColor: '#25D366',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+            zIndex: 1000,
+            transition: 'transform 0.2s ease-in-out'
+          }}
+          onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
+          onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+          title="Chat with us on WhatsApp"
+        >
+          <i className="fab fa-whatsapp" style={{ color: 'white', fontSize: '30px' }}></i>
+        </div>
       </div>
     </Router>
   );

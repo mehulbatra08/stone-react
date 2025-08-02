@@ -74,6 +74,39 @@ const Contact = () => {
     </div>
 </section>
 
+      {/* Connect with Stone Expert Section */}
+      <section className="py-5 bg-white">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-8 text-center">
+              <h2 className="fw-bold mb-3">Connect with a Stone Expert</h2>
+              <p className="lead mb-4">Get personalized guidance from our experienced stone specialists to find the perfect solution for your project.</p>
+              <div className="d-flex justify-content-center gap-3 flex-wrap">
+                <a 
+                  href="https://wa.me/919413172337?text=Hello! I would like to connect with a stone expert for my project."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-lg px-4 py-3 fw-semibold shadow"
+                  style={{ backgroundColor: '#25D366', borderColor: '#25D366', color: 'white' }}
+                >
+                  <i className="fab fa-whatsapp me-2"></i>
+                  Chat on WhatsApp
+                </a>
+                <a 
+                  href="tel:+919413172337"
+                  className="btn btn-lg btn-outline-primary px-4 py-3 fw-semibold shadow"
+                  style={{ borderColor: '#b78f59', color: '#b78f59' }}
+                >
+                  <i className="fas fa-phone me-2"></i>
+                  Call Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <hr style={{border: '1px solid white'}} />
+
       {/* Google Maps Section */}
       <section className="py-5 bg-white">
         <div className="container">

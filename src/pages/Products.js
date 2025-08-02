@@ -23,6 +23,17 @@ const ProductsPage = () => {
         <div className="container text-center py-5">
           <h1 className="display-4 fw-bold mb-3">Our Products</h1>
           <p className="lead mb-4">Discover our wide range of high-quality natural stone products.</p>
+          <div className="d-flex justify-content-center gap-3 flex-wrap">
+            <a 
+              href="/Chawanda_Brochure.pdf" 
+              download 
+              className="btn btn-lg btn-light px-4 py-2 fw-semibold shadow"
+              style={{ backgroundColor: 'white', borderColor: 'white', color: '#b78f59' }}
+            >
+              <i className="fas fa-download me-2"></i>
+              Download Catalog PDF
+            </a>
+          </div>
         </div>
       </section>
 
