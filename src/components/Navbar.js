@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="container">
         <Link className="navbar-brand" to="/">
           <img 
-            src="/images/Chawanda-Logo-No-Bg.png" 
+            src="/images/Chawanda_New_Logo.png" 
             alt="Chawanda Logo" 
             height="75"
             width="150"

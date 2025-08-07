@@ -34,7 +34,7 @@ const Footer = () => {
             <h5>Address</h5>
             <ul className="list-unstyled">
               <li className="mb-2"><strong>Office:</strong> chawanda marmonite , siyana , Rajsamand 313332</li>
-              <li className="mb-2"><strong>Mines:</strong> Sai chawanda marble private limited Address- B-253, road no. 12 , mewar industrial, Udaipur 313001</li>
+              <li className="mb-2"><strong>Mines:</strong> Chawanda Granito, Fakoliya , District - Bhilwara</li>
               <li className="mb-2"><strong>Factory:</strong> hans marble pvt ltd Aagriya choraha , amet 313332</li>
             </ul>
           </div>

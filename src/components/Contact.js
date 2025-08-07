@@ -117,7 +117,7 @@ const Contact = () => {
                 <div className="card-body p-0">
                   <div className="ratio ratio-16x9 rounded-bottom overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.958132542656!2d73.8362293!3d25.1708915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39683f894da8d0b9%3A0x74cc33c670942f7!2sMaa%20Chawanda%20Marble!5e0!3m2!1sen!2sin!4v1748432268758!5m2!1sen!2sin"
+                      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3609.8672336472628!2d73.86556227538213!3d25.207699477704143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDEyJzI3LjciTiA3M8KwNTInMDUuMyJF!5e0!3m2!1sen!2sin!4v1754586049280!5m2!1sen!2sin"
                       style={{ border: 0, width: '100%', height: '100%', minHeight: '350px' }}
                       allowFullScreen=""
                       aria-hidden="false"
